@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Praticando DOM e localStorage</title>
+
+    <link rel="stylesheet" href="teste.css">
+</head>
+
+<body>
+    <div id="container">
+        <header>
+            <label for="expandir-sidebar" id="icone-expandir-sidebar">☰</label>
+            <input type="checkbox" id="expandir-sidebar">
+        </header>
+
+        <div id="uniao">
+            <nav>
+                <div id="div-fonte">
+                    <label for="fonte">Tamanho da fonte</label>
+
+                    <div id="mostrar-valor">
+                        <input type="range" id="fonte" min="12" max="20" value="16">
+                        <span id="valor-fonte">16</span>
+                    </div>
+                </div>
+
+                <div class="div-interruptores">
+                    <label for="noturno">Modo noturno</label>
+                    <input type="checkbox" id="noturno" class="interruptor">
+                </div>
+
+                <div class="div-interruptores">
+                    <label for="contraste">Alto contraste</label>
+                    <input type="checkbox" id="contraste" class="interruptor">
+                </div>
+            </nav>
+            
+            <main>
+                <h2>Citações Atemporais</h2>
+
+                <div id="expositor-citações">
+                    <div class="cartao">
+                        <p><i>"Se todos os nossos infortúnios fossem colocados juntos e, posteriormente, repartidos em partes iguais por cada um de nós, ficaríamos muito felizes se pudéssemos ter apenas, de novo, só os nossos."</i></p>
+                        <span>~ Sócrates</span>
+                    </div>
+
+                    <div class="cartao">
+                        <p><i>"Podem ter a certeza de que não foi quando descobriu a América, mas sim quando estava a descobri-la, que Colombo se sentiu feliz."</i></p>
+                        <span>~ Fiódor Dostoiévski</span>
+                    </div>
+
+                    <div class="cartao">
+                        <p><i>"No convívio com sábios e artistas facilmente nos enganamos no sentido oposto: não é raro encontrarmos por detrás dum sábio notável um homem medíocre, e muitas vezes por detrás de um artista medíocre - um homem muito notável."</i></p>
+                        <span>~ Friedrich Nietzsche</span>
+                    </div>
+
+                    <div class="cartao">
+                        <p><i>"A sua suprema agonia foi o desaparecimento da certeza e sentiu-se desenraizado... Ah, que coisa assustadora! O homem determinado, já sem conhecer o seu caminho e a recuar!"</i></p>
+                        <span>~ Victor Hugo - Os Miseráveis</span>
+                    </div>
+
+                    <div class="cartao">
+                        <p><i>"Talvez haja apenas um pecado capital: a impaciência. Devido à impaciência, fomos expulsos do Paraíso; devido à impaciência, não podemos voltar."</i></p>
+                        <span>~ Franz Kafka</span>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="teste.js"></script>
+</body>
+
+</html>
