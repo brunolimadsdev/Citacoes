@@ -13,7 +13,7 @@ body {
 #container {
     display: flex;
     flex-direction: column;
-    height: 100dvh;
+    height: 100%;
     background-color: #f8fafc;
 }
 
@@ -53,7 +53,7 @@ header {
 #uniao {
     display: flex;
     flex-direction: row;
-    height: 100%;
+    flex: 1; /* faz "uniao ocupar apenas o espaço restante depois que o header tiver sua altura calculada. */
 }
 
 main {
@@ -61,11 +61,12 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: 30px;
     gap: 100px;
     width: 100%;
 }
 
-main h2 {
+main h1 {
     color: #1e293b;
     letter-spacing: 1px;
     text-shadow: 0 2px 4px rgba(0,0,0,0.08);
@@ -85,7 +86,7 @@ main .cartao{
     justify-content: center;
     align-items: center;
     padding: 10px;
-    height: 200px;
+    height: 230px;
     width: 380px;
     border-radius: 8px;
     background-color: #ffffff;
@@ -107,10 +108,13 @@ main .cartao:hover {
 
 /* SIDE BAR */
 nav {
+    position: sticky; /* Só precisei adicionar os tres primeiros para fazer a barra acompanhar a tela */
+    top: 0;
+    flex-shrink: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 100%;
+    height: 100dvh;
     width: 100px;
     padding: 10px;
     gap: 20px;
@@ -242,7 +246,7 @@ nav label {
     color: #e5e7eb;
 }
 
-.modo-noturno h2 {
+.modo-noturno h1 {
     color: #f9fafb;
     text-shadow: 0 2px 8px rgba(59,130,246,0.25);
 }
@@ -315,7 +319,7 @@ nav label {
 }
 
 .alto-contraste .cartao span,
-.alto-contraste h2 {
+.alto-contraste h1 {
     color: #ffff00;
 }
 
@@ -347,4 +351,125 @@ nav label {
 
 .alto-contraste #icone-expandir-sidebar:hover {
     color: #ffff00;
+}
+
+/* TABLETS E CELULARES */
+@media (max-width: 768px) {
+
+    /* Estrutura principal */
+    #uniao {
+        flex-direction: column;
+    }
+
+    /* Header */
+    header {
+        padding: 10px;
+    }
+
+    /* Sidebar */
+    nav {
+        display: none;
+        position: static;
+        width: 100%;
+        height: auto;
+        flex-direction: column;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px;
+        border-radius: 0;
+    }
+
+    #container:has(#expandir-sidebar:checked) nav {
+        display: flex;
+        width: 100%;
+    }
+
+    nav label {
+        display: flex;
+    }
+
+    #div-fonte {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        max-width: 300px;
+    }
+
+    #mostrar-valor {
+        width: 100%;
+        justify-content: center;
+    }
+
+    #fonte {
+        width: 100%;
+    }
+
+    .div-interruptores {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    /* Conteúdo principal */
+    main {
+        padding: 15px;
+        gap: 40px;
+    }
+
+    main h1 {
+        text-align: center;
+    }
+
+    /* Expositor */
+    #expositor-citações {
+        width: 100%;
+        gap: 20px;
+    }
+
+    /* Cartões */
+    main .cartao {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        min-height: 180px;
+    }
+
+    main .cartao p {
+        line-height: 1.5;
+    }
+}
+
+/* CELULARES PEQUENOS */
+@media (max-width: 480px) {
+
+    html {
+        font-size: 14px;
+    }
+
+    main {
+        padding: 10px;
+        gap: 25px;
+    }
+
+    main .cartao {
+        padding: 15px;
+    }
+
+    main .cartao span {
+        margin-top: 15px;
+        text-align: right;
+        font-size: 0.85rem;
+    }
+
+    .div-interruptores {
+        padding: 8px;
+        gap: 10px;
+    }
+
+    #div-fonte {
+        padding: 8px;
+    }
+
+    nav {
+        padding: 8px;
+    }
 }
