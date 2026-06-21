@@ -21,6 +21,7 @@ body {
 header {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
     align-items: center;
     padding: 5px;
     width: 100%;
@@ -72,7 +73,7 @@ main h1 {
     text-shadow: 0 2px 4px rgba(0,0,0,0.08);
 }
 
-#expositor-citações {
+#expositor-citacoes {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -420,7 +421,7 @@ nav label {
     }
 
     /* Expositor */
-    #expositor-citações {
+    #expositor-citacoes {
         width: 100%;
         gap: 20px;
     }

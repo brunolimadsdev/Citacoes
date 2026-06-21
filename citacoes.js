@@ -8,6 +8,8 @@ const valorFonte = document.getElementById("valor-fonte");
 const noturno = document.getElementById("noturno");
 // "contraste" recebe todo o input de id "contraste"
 const contraste = document.getElementById("contraste");
+// "botaoNovaCitacao" recebe todo o button de id "nova-citacao"
+const botaoNovaCitacao = document.getElementById("nova-citacao");
 
 // FUNÇÕES
 function aumentarFonte(){
@@ -46,6 +48,59 @@ function altoContraste(){
     localStorage.setItem("contraste", contraste.checked);
 }
 
+function adicionarCitacao(){
+    // "prompt" abre uma janelinha no navegador, exibindo o conteúdo entre parênteses e criando um campo para inserção de dados
+    // o que for digitado no campo do "prompt" sera armazenado na variável "citacao"
+    const citacao = prompt("Digite a citação:");
+    // se a variável "citacao" não existir ou estiver vazia, encerra a função ali mesmo
+    if (!citacao){
+        return;
+    }
+
+    const autor = prompt("Digite o autor e obra:");
+
+    // VALIDAÇÃO DA CITAÇÃO
+
+    // avalia se a variável "citacao" possui mais do que 300 carecteres. Se sim, sentra no laço
+    if (citacao.length > 270){
+        // "alert" abre uma janelinha no navegador, exibindo o conteúdo entre parênteses
+        alert("A citação não pode ultrapassar 270 caracteres.");
+        // encerra a função
+        return;
+    }
+
+    // VALIDAÇÃO DO AUTOR
+    if (autor.length > 43) {
+        alert("O nome do autor não pode ultrapassar 43 caracteres.");
+        return;
+    }
+
+    // CRIAÇÃO DO CARD
+    
+    // cria um elemento "<div>" e guarda dentro da variável "cartao", mas não faz nada além disso. É como se fosse um "pendrive bootável"
+    const cartao = document.createElement("div");
+    // acessa a lista de classes atribuídas a variável "cartao" e adiciona a classe "cartao"
+    cartao.classList.add("cartao");
+
+    const p = document.createElement("p");
+    const i = document.createElement("i");
+    // acessa o conteúdo de texto presente em "i" e coloca lá dentro o conteudo entre crases como uma string
+    // o nome de uma variável entre "${}", especificamente quando entre crases, permite que seu valor também seja exibido ou armazenado
+    // crase, nesse sentido, indica que o conteúdo é uma string onde pode ou não existir a presença de uma variável
+    i.textContent = `"${citacao}"`;
+
+    const span = document.createElement("span");
+    span.textContent = `~ ${autor}`;
+
+    // coloca dentro da variável "p", a variável entre parênteses como último filho. Isso é DOM por definição
+    p.appendChild(i);
+    cartao.appendChild(p);
+    cartao.appendChild(span);
+
+    // procura dentro do documento html um elemento com o id "expositor-citacoes" e dentro dele, coloca como último filho a variável "cartao"
+    document.getElementById("expositor-citacoes").appendChild(cartao);
+}
+
 // APLICAR DADOS SALVOS
 
 // se existir "fonte" no localStorage, aplica as alterações encontradas
@@ -75,3 +130,5 @@ fonte.addEventListener("input", aumentarFonte);
 noturno.addEventListener("change", modoNoturno);
 // se alguma mudança ocorrer em "contraste", chama a função
 contraste.addEventListener("change", altoContraste);
+// se o botao presente em "botaoNovaCitacao" for clicado, chama a função
+botaoNovaCitacao.addEventListener("click", adicionarCitacao);
