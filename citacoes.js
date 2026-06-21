@@ -2,14 +2,12 @@
 
 // "fonte" recebe todo o input de id "fonte"
 const fonte = document.getElementById("fonte");
-// "valorFonte" recebe todo o span de id "valor-fonte"
 const valorFonte = document.getElementById("valor-fonte");
-// "noturno" recebe todo o input de id "noturno"
 const noturno = document.getElementById("noturno");
-// "contraste" recebe todo o input de id "contraste"
 const contraste = document.getElementById("contraste");
-// "botaoNovaCitacao" recebe todo o button de id "nova-citacao"
 const botaoNovaCitacao = document.getElementById("nova-citacao");
+// "botoesExcluir" recebe todos os elementos que encontrar no documento html com a classe "apagar-cartao"
+const botoesExcluir = document.querySelectorAll(".apagar-cartao");
 
 // FUNÇÕES
 function aumentarFonte(){
@@ -92,13 +90,33 @@ function adicionarCitacao(){
     const span = document.createElement("span");
     span.textContent = `~ ${autor}`;
 
+    const botaoExcluir = document.createElement("button");
+    botaoExcluir.classList.add("apagar-cartao");
+    botaoExcluir.textContent = "×";
+    botaoExcluir.addEventListener("click", excluirCartao)
+
+
+
     // coloca dentro da variável "p", a variável entre parênteses como último filho. Isso é DOM por definição
     p.appendChild(i);
+    cartao.appendChild(botaoExcluir);
     cartao.appendChild(p);
     cartao.appendChild(span);
 
     // procura dentro do documento html um elemento com o id "expositor-citacoes" e dentro dele, coloca como último filho a variável "cartao"
     document.getElementById("expositor-citacoes").appendChild(cartao);
+}
+
+function excluirCartao(cartaoExcluido){
+    // "confirm" abre uma janelinha no navegador que exibe a mensagem entre parênteses e te deixa reponder "sim" ou "nao" e armazena na variável um valor booleano
+    const confirmar = confirm("Tem certeza que deseja excluir esta citação?");
+
+    if(confirmar){
+        // "target" procura exatamente o elemento que foi clicado em "cartaoExcluido"
+        // "closest", nesse caso, sobe na arvore a partir do target até encontrar o objeto mais próximo com a classe "cartao"
+        // "remove" dá o golpe de misericódia e exclui o elemento que "closest" encontrou
+        cartaoExcluido.target.closest(".cartao").remove();
+    }
 }
 
 // APLICAR DADOS SALVOS
@@ -116,7 +134,6 @@ if(localStorage.noturno === "true"){
     document.body.classList.add("modo-noturno");
 }
 
-// se existir "contraste" no localStorage e nele tiver uma string "true", aplica as alterações do modo
 if(localStorage.contraste === "true"){
     contraste.checked = true;
     document.body.classList.add("alto-contraste");
@@ -128,7 +145,13 @@ if(localStorage.contraste === "true"){
 fonte.addEventListener("input", aumentarFonte);
 // se alguma mudança ocorrer em "noturno", chama a função
 noturno.addEventListener("change", modoNoturno);
-// se alguma mudança ocorrer em "contraste", chama a função
 contraste.addEventListener("change", altoContraste);
 // se o botao presente em "botaoNovaCitacao" for clicado, chama a função
 botaoNovaCitacao.addEventListener("click", adicionarCitacao);
+
+// para cada elemento presente em "botoesExcluir", um de cada vez, roda a função
+// nomeia o elemento que disparou a função de "botao", e adiciona a botao um observador que dispara a função sempre que "botao" é clicado
+botoesExcluir.forEach(observadorBotao);
+function observadorBotao(botao){
+    botao.addEventListener("click", excluirCartao);
+}
