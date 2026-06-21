@@ -49,6 +49,23 @@ header {
     transform: rotate(90deg);
 }
 
+header button {
+    border: none;
+    background-color: #64748b;
+    color: #fff;
+    padding: 5px;
+    font-weight: bold;
+    border-radius: 4px;
+    transition: 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08), 0 12px 30px rgba(0,0,0,0.06);
+}
+
+header button:hover {
+    cursor: pointer;
+    transform: translateY(-1px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12), 0 18px 40px rgba(0,0,0,0.10);
+}
+
 /* EXIBICAO PRINCIPAL */
 
 #uniao {
@@ -258,6 +275,10 @@ nav label {
     color: #e5e7eb;
 }
 
+.modo-noturno header button {
+    background-color: #374151;
+}
+
 .modo-noturno nav {
     background-color: #1f2937;
 }
@@ -313,6 +334,15 @@ nav label {
     border-bottom: 2px solid #ffff00;
 }
 
+.alto-contraste header button {
+    background-color: transparent;
+    border: solid, #ffff00;
+}
+
+.alto-contraste header button:hover {
+    border-color: #fff;
+}
+
 .alto-contraste nav {
     background-color: #000;
     color: #ffff00;
@@ -350,7 +380,7 @@ nav label {
     border-color: #fff;
 }
 
-.apagar-cartao {
+.alto-contraste .apagar-cartao {
     border: none;
     background-color: transparent;
     color: #ffff00;
@@ -358,7 +388,7 @@ nav label {
     transition: 0.2s;
 }
 
-.apagar-cartao:hover {
+.alto-contraste .apagar-cartao:hover {
     color: #fff;
 }
 

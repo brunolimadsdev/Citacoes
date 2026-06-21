@@ -6,6 +6,7 @@ const valorFonte = document.getElementById("valor-fonte");
 const noturno = document.getElementById("noturno");
 const contraste = document.getElementById("contraste");
 const botaoNovaCitacao = document.getElementById("nova-citacao");
+const botaoSalvar = document.getElementById("salvar-estado")
 // "botoesExcluir" recebe todos os elementos que encontrar no documento html com a classe "apagar-cartao"
 const botoesExcluir = document.querySelectorAll(".apagar-cartao");
 
@@ -119,7 +120,82 @@ function excluirCartao(cartaoExcluido){
     }
 }
 
+function salvarEstado(){
+    const confirmar = confirm("Deseja salvar o estado atual da página?");
+
+    if(!confirmar){
+        return;
+    }
+
+    const cartoes = document.querySelectorAll(".cartao");
+    // isso cria um "array", uma "lista" dentro da variável. Compare com um vetor, se quiser, mas saiba que há diferenças
+    const citacoes = [];
+
+    cartoes.forEach(colocarLista);
+    function colocarLista(cartao){
+        // "querySelector", nesse caso, procura um elemento "i" que esteja dentro de um elemento "p"
+        // depois, o "textContent" observa somente o conteúdo de texto presente e joga para dentro da variável
+        const citacao = cartao.querySelector("p i").textContent;
+        const autor = cartao.querySelector("span").textContent;
+
+        // "push({})" guarda dentro da lista o valor de "citação" e o valor de "autor" e pula para o próximo item da lista
+        citacoes.push({citacao, autor});
+    }
+
+    // "JSON.stringify" transforma o conteúdo da variável "citacoes", que era um objeto, em uma string. Agora sim, é possível guarda-lo no local storage
+    localStorage.setItem("citacoes", JSON.stringify(citacoes));
+    alert("Alterações salvas com sucesso!");
+}
+
+function restaurarCitacoes(){
+    const citacoesSalvas = localStorage.getItem("citacoes");
+
+    // Apaga todo o conteudo de "expositor-citacoes"
+    document.getElementById("expositor-citacoes").innerHTML = "";
+
+
+    // "JSON.parse" reconstrói o array original a partir da string que ele mesmo gerou, depois joga o array dentro da variável "citacoes"
+    const citacoes = JSON.parse(citacoesSalvas);
+
+    citacoes.forEach(recriarCartao);
+    function recriarCartao(item){
+        // chama função "criarCartao" e passa para ela o valor presente em citação e o valor presente em autor
+        criarCartao(item.citacao, item.autor);
+    }
+}
+
+// iguala os argumentos aos "apelidos" separadamente, na ordem em que aparecem
+function criarCartao(citacao, autor){
+
+    const cartao = document.createElement("div");
+    cartao.classList.add("cartao");
+
+    const botaoExcluir = document.createElement("button");
+    botaoExcluir.classList.add("apagar-cartao");
+    botaoExcluir.textContent = "×";
+    botaoExcluir.addEventListener("click", excluirCartao);
+
+    const p = document.createElement("p");
+    const i = document.createElement("i");
+    i.textContent = citacao;
+
+    const span = document.createElement("span");
+    span.textContent = autor;
+
+    p.appendChild(i);
+
+    cartao.appendChild(botaoExcluir);
+    cartao.appendChild(p);
+    cartao.appendChild(span);
+
+    document.getElementById("expositor-citacoes").appendChild(cartao);
+}
+
 // APLICAR DADOS SALVOS
+
+if(localStorage.citacoes){
+    restaurarCitacoes();
+}
 
 // se existir "fonte" no localStorage, aplica as alterações encontradas
 if(localStorage.fonte){
@@ -148,6 +224,7 @@ noturno.addEventListener("change", modoNoturno);
 contraste.addEventListener("change", altoContraste);
 // se o botao presente em "botaoNovaCitacao" for clicado, chama a função
 botaoNovaCitacao.addEventListener("click", adicionarCitacao);
+botaoSalvar.addEventListener("click", salvarEstado);
 
 // para cada elemento presente em "botoesExcluir", um de cada vez, roda a função
 // nomeia o elemento que disparou a função de "botao", e adiciona a botao um observador que dispara a função sempre que "botao" é clicado
