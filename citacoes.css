@@ -51,12 +51,13 @@ header {
 
 header button {
     border: none;
+    user-select: none;
     background-color: #64748b;
     color: #fff;
-    padding: 5px;
+    padding: 6px;
     font-weight: bold;
     border-radius: 4px;
-    transition: 0.3s ease;
+    transition: 0.2s ease;
     box-shadow: 0 4px 10px rgba(0,0,0,0.08), 0 12px 30px rgba(0,0,0,0.06);
 }
 
@@ -64,6 +65,12 @@ header button:hover {
     cursor: pointer;
     transform: translateY(-1px);
     box-shadow: 0 8px 20px rgba(0,0,0,0.12), 0 18px 40px rgba(0,0,0,0.10);
+}
+
+#conjunto-opcoes {
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
 }
 
 /* EXIBICAO PRINCIPAL */
@@ -85,6 +92,7 @@ main {
 }
 
 main h1 {
+    user-select: none;
     color: #1e293b;
     letter-spacing: 1px;
     text-shadow: 0 2px 4px rgba(0,0,0,0.08);
@@ -126,6 +134,7 @@ main .cartao:hover {
 }
 
 .apagar-cartao {
+    user-select: none;
     position: absolute;
     top: 0;
     right: 0;
@@ -170,6 +179,7 @@ nav label {
 }
 
 #div-fonte {
+    user-select: none;
     display: none;
 }
 
@@ -431,6 +441,14 @@ nav label {
         padding: 10px;
     }
 
+    header button {
+        padding: 4px;
+    }
+
+    #conjunto-opcoes {
+        gap: 14px;
+    }
+
     /* Sidebar */
     nav {
         display: none;
@@ -508,6 +526,14 @@ nav label {
 
     html {
         font-size: 14px;
+    }
+
+    header button {
+        padding: 3px;
+    }
+
+    #conjunto-opcoes {
+        gap: 8px;
     }
 
     main {

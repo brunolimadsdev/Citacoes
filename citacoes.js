@@ -7,6 +7,7 @@ const noturno = document.getElementById("noturno");
 const contraste = document.getElementById("contraste");
 const botaoNovaCitacao = document.getElementById("nova-citacao");
 const botaoSalvar = document.getElementById("salvar-estado")
+const botaoResetar = document.getElementById("resetar");
 // "botoesExcluir" recebe todos os elementos que encontrar no documento html com a classe "apagar-cartao"
 const botoesExcluir = document.querySelectorAll(".apagar-cartao");
 
@@ -58,8 +59,6 @@ function adicionarCitacao(){
 
     const autor = prompt("Digite o autor e obra:");
 
-    // VALIDAÇÃO DA CITAÇÃO
-
     // avalia se a variável "citacao" possui mais do que 300 carecteres. Se sim, sentra no laço
     if (citacao.length > 270){
         // "alert" abre uma janelinha no navegador, exibindo o conteúdo entre parênteses
@@ -74,8 +73,6 @@ function adicionarCitacao(){
         return;
     }
 
-    // CRIAÇÃO DO CARD
-    
     // cria um elemento "<div>" e guarda dentro da variável "cartao", mas não faz nada além disso. É como se fosse um "pendrive bootável"
     const cartao = document.createElement("div");
     // acessa a lista de classes atribuídas a variável "cartao" e adiciona a classe "cartao"
@@ -95,8 +92,6 @@ function adicionarCitacao(){
     botaoExcluir.classList.add("apagar-cartao");
     botaoExcluir.textContent = "×";
     botaoExcluir.addEventListener("click", excluirCartao)
-
-
 
     // coloca dentro da variável "p", a variável entre parênteses como último filho. Isso é DOM por definição
     p.appendChild(i);
@@ -191,6 +186,20 @@ function criarCartao(citacao, autor){
     document.getElementById("expositor-citacoes").appendChild(cartao);
 }
 
+function resetarEstado(){
+    const confirmar = confirm("Tem certeza que deseja restaurar o estado original? Todas as alterações serão perdidas.");
+
+    if(!confirmar){
+        return;
+    }
+
+    // procura dentro do "localStorage" pela chave "citacoes" e apaga ela completamente (não apenas deixa vazia, é uma hard-delete nervoso)
+    localStorage.removeItem("citacoes");
+
+    // "location" se refere ao endereço atual do navegador, "reload()" recarrega a página espontâneamente
+    location.reload();
+}
+
 // APLICAR DADOS SALVOS
 
 if(localStorage.citacoes){
@@ -225,6 +234,7 @@ contraste.addEventListener("change", altoContraste);
 // se o botao presente em "botaoNovaCitacao" for clicado, chama a função
 botaoNovaCitacao.addEventListener("click", adicionarCitacao);
 botaoSalvar.addEventListener("click", salvarEstado);
+botaoResetar.addEventListener("click", resetarEstado);
 
 // para cada elemento presente em "botoesExcluir", um de cada vez, roda a função
 // nomeia o elemento que disparou a função de "botao", e adiciona a botao um observador que dispara a função sempre que "botao" é clicado

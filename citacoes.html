@@ -4,6 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="brunolimadsdev">
+    <meta name="desciption" content="Site criado com o objetivo de estudar DOM e localStorage.">
+    <meta name="keywords" content="citações, filosofia, literatura">
     <title>Citações</title>
 
     <link rel="stylesheet" href="citacoes.css">
@@ -14,8 +17,12 @@
         <header>
             <label for="expandir-sidebar" id="icone-expandir-sidebar">☰</label>
             <input type="checkbox" id="expandir-sidebar">
-            <button id="nova-citacao">Adicionar citação</button>
-            <button id="salvar-estado">Salvar alterações</button>
+
+            <div id="conjunto-opcoes">
+                <button id="nova-citacao">Adicionar citação</button>
+                <button id="salvar-estado">Salvar alterações</button>
+                <button id="resetar">Retornar ao estado original</button>
+            </div>
         </header>
 
         <div id="uniao">
