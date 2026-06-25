@@ -494,6 +494,7 @@ nav label {
 
     /* Conteúdo principal */
     main {
+        min-height: 100dvh;
         padding: 15px;
         gap: 40px;
     }
@@ -521,6 +522,13 @@ nav label {
     }
 }
 
+@media (max-width: 530px) {
+    header button {
+        padding: 3px;
+        width: 120px;
+    }
+}
+
 /* CELULARES PEQUENOS */
 @media (max-width: 480px) {
 
@@ -530,6 +538,7 @@ nav label {
 
     header button {
         padding: 3px;
+        width: 115px;
     }
 
     #conjunto-opcoes {
@@ -546,8 +555,6 @@ nav label {
     }
 
     main .cartao span {
-        margin-top: 15px;
-        text-align: right;
         font-size: 0.85rem;
     }
 
