@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="brunolimadsdev">
-    <meta name="desciption" content="Site criado com o objetivo de estudar DOM e localStorage.">
+    <meta name="desciption" content="Sistema web criado com o objetivo de estudar DOM.">
     <meta name="keywords" content="citações, filosofia, literatura">
-    <title>Citações</title>
+    <title>Citações Literárias</title>
 
     <link rel="stylesheet" href="style.css">
 </head>
@@ -15,71 +15,69 @@
 <body>
     <div id="container">
         <header>
-            <label for="expandir-sidebar" id="icone-expandir-sidebar">☰</label>
-            <input type="checkbox" id="expandir-sidebar">
+            <label for="checkbox-nav">☰</label>
+            <input type="checkbox" id="checkbox-nav">
 
-            <div id="conjunto-opcoes">
-                <button id="nova-citacao">Adicionar citação</button>
-                <button id="salvar-estado">Salvar alterações</button>
-                <button id="resetar">Retornar ao estado original</button>
+            <div id="conjunto-botoes">
+                <button id="criar-cartao">Criar novo cartão</button>
+                <button id="salvar">Salvar estado atual da página</button>
+                <button id="restaurar">Restaurar estado original</button>
             </div>
         </header>
 
-        <div id="uniao">
+        <div id="nav-main">
             <nav>
-                <div id="div-fonte">
+                <div id="conjunto-fonte">
                     <label for="fonte">Tamanho da fonte</label>
 
-                    <div id="mostrar-valor">
+                    <div id="conjunto-valor">
                         <input type="range" id="fonte" min="12" max="20" value="16">
-                        <span id="valor-fonte">16</span>
+                        <span id="fonte-atual">16</span>
                     </div>
                 </div>
 
-                <div class="div-interruptores">
+                <div class="label-input">
                     <label for="noturno">Modo noturno</label>
                     <input type="checkbox" id="noturno" class="interruptor">
                 </div>
 
-                <div class="div-interruptores">
+                <div class="label-input">
                     <label for="contraste">Alto contraste</label>
                     <input type="checkbox" id="contraste" class="interruptor">
                 </div>
             </nav>
-            
-            <main>
-                <h1>Citações</h1>
 
-                <div id="expositor-citacoes">
-                    <div class="cartao">
-                        <button class="apagar-cartao">×</button>
-                        <p><i>“A situação mais simpática é aquela em que as pessoas não se envergonham umas das outras, mas agem franca e abertamente. E para quê enganar-se? É a mais vã e imprudente das ocupações.”</i></p>
-                        <span>~ Fiódor Dostoiévski - O Jogador</span>
-                    </div>
+            <main id="principal">
+                <h1>Citações Literárias</h1>
 
-                    <div class="cartao">
-                        <button class="apagar-cartao">×</button>
-                        <p><i>"Que seja claro o seu céu, que seja luminoso e sereno o seu lindo sorriso; abençoada seja você pelo momento de júbilo e felicidade que concedeu a um coração solitário e agradecido! Meu Deus! Um momento inteiro de júbilo! Não será isto o bastante para uma vida inteira?"</i></p>
-                        <span>~ Fiódor Dostoiévski - Noites Brancas</span>
-                    </div>
+                <div class="cartao">
+                    <button class="excluir">×</button>
+                    <p><i>“A situação mais simpática é aquela em que as pessoas não se envergonham umas das outras, mas agem franca e abertamente. E para quê enganar-se? É a mais vã e imprudente das ocupações.”</i></p>
+                    <span>~ Fiódor Dostoiévski - O Jogador</span>
+                </div>
 
-                    <div class="cartao">
-                        <button class="apagar-cartao">×</button>
-                        <p><i>"É uma distinção ter muitas virtudes, mas é sorte bem dura; e não são poucos os que se têm ido matar ao deserto, cansados de serem combate e campo de batalha das suas próprias virtudes."</i></p>
-                        <span>~ Friedrich Nietzsche - Assim Falou Zaratustra</span>
-                    </div>
+                <div class="cartao">
+                    <button class="excluir">×</button>
+                    <p><i>"Que seja claro o seu céu, que seja luminoso e sereno o seu lindo sorriso; abençoada seja você pelo momento de júbilo e felicidade que concedeu a um coração solitário e agradecido! Meu Deus! Um momento inteiro de júbilo! Não será isto o bastante para uma vida inteira?"</i></p>
+                    <span>~ Fiódor Dostoiévski - Noites Brancas</span>
+                </div>
 
-                    <div class="cartao">
-                        <button class="apagar-cartao">×</button>
-                        <p><i>"A sua suprema agonia foi o desaparecimento da certeza e sentiu-se desenraizado... Ah, que coisa assustadora! O homem determinado, já sem conhecer o seu caminho e a recuar!"</i></p>
-                        <span>~ Victor Hugo - Os Miseráveis</span>
-                    </div>
+                <div class="cartao">
+                    <button class="excluir">×</button>
+                    <p><i>"É uma distinção ter muitas virtudes, mas é sorte bem dura; e não são poucos os que se têm ido matar ao deserto, cansados de serem combate e campo de batalha das suas próprias virtudes."</i></p>
+                    <span>~ Friedrich Nietzsche - Assim Falou Zaratustra</span>
+                </div>
 
-                    <div class="cartao">
-                        <button class="apagar-cartao">×</button>
-                        <p><i>"⁠Certamente não entendiam mais suas palavras, embora para ele elas parecessem claras, mais claras que antes, talvez porque o ouvido havia se acostumado."</i></p>
-                        <span>~ Franz Kafka - A Metamorfose</span>
-                    </div>
+                <div class="cartao">
+                    <button class="excluir">×</button>
+                    <p><i>"A sua suprema agonia foi o desaparecimento da certeza e sentiu-se desenraizado... Ah, que coisa assustadora! O homem determinado, já sem conhecer o seu caminho e a recuar!"</i></p>
+                    <span>~ Victor Hugo - Os Miseráveis</span>
+                </div>
+
+                <div class="cartao">
+                    <button class="excluir">×</button>
+                    <p><i>"⁠Certamente não entendiam mais suas palavras, embora para ele elas parecessem claras, mais claras que antes, talvez porque o ouvido havia se acostumado."</i></p>
+                    <span>~ Franz Kafka - A Metamorfose</span>
                 </div>
             </main>
         </div>
