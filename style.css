@@ -14,6 +14,7 @@ body {
     display: flex;
     flex-direction: column;
     height: 100dvh;
+    overflow: hidden;
 }
 
 /* HEADER */
@@ -254,7 +255,7 @@ main h1 {
     padding: 15px;
 
     width: 430px;
-    height: 250px;
+    height: 285px;
 
     background-color: #ffffff;
     color: #1e293b;
@@ -493,18 +494,19 @@ main h1 {
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        height: 100px;
+        text-align: center;
+        height: 115px;
         gap: 25px;
     }
 
     #conjunto-fonte {
-        height: 100px;
+        height: 115px;
     }
 }
 
 @media (max-width: 720px) {
     header {
-        height: 60px;
+        height: 65px;
     }
 
     header button {
@@ -525,12 +527,23 @@ main h1 {
     }
 
     #conjunto-botoes {
-        gap: 10px;
+        gap: 5px;
     }
 }
 
 @media (max-width: 480px) {
     header {
-        padding: 10px;
+        padding: 3px 3px 3px 5px;
+    }
+
+    header button {
+        width: 100px;
+        padding: 2px;
+        font-size: 12px;
+    }
+
+    #container:has(#checkbox-nav:checked) nav {
+        padding: 3px;
+        gap: 3px;
     }
 }
